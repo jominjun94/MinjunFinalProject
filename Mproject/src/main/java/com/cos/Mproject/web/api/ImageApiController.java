@@ -59,7 +59,12 @@ public class ImageApiController {
 	
 	
 	
-	
+	@DeleteMapping("/api/image/{imageId}/delete")
+	public ResponseEntity<?> deleteImage(@PathVariable int imageId){
+		imageService.이미지삭제(imageId);
+		
+		return new ResponseEntity<>(new CMRespDTO<>(1,"이미지 삭제 성공",null),HttpStatus.OK);
+	}
 	
 
 	

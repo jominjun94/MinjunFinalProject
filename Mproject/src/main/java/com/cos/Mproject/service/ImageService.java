@@ -14,6 +14,7 @@ import com.cos.Mproject.config.auth.PrincipalDetails;
 import com.cos.Mproject.domain.image.Image;
 import com.cos.Mproject.domain.image.ImageRepository;
 import com.cos.Mproject.domain.like.LikesRepository;
+import com.cos.Mproject.domain.user.UserRepository;
 import com.cos.Mproject.dto.image.ImageDto;
 import com.cos.Mproject.dto.image.ImageUploadDto;
 import com.cos.Mproject.handler.CustomApiException;
@@ -31,6 +32,8 @@ public class ImageService {
 	private final ImageRepository imageRepository;
 	
 	private final LikesRepository likesRepository;
+	
+	
 	
 	public void 사진업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
@@ -69,12 +72,14 @@ public class ImageService {
 			throw new CustomValidationApiException("해당 프로필은 없는 페이지 입니다.");
 		});
 		
+		
+		
 		ImageDto dto = new ImageDto();
 		
 		dto.setLikeState(likesRepository.mLiketrue(imageEntity.getId(),userId) == 1);
 		dto.setImage(imageEntity);
 		dto.setLikeCount(likesRepository.mLikeCount(imageId));
-		
+		dto.setUser(imageEntity.getUser());
 		
 		return dto;
 	}
@@ -93,6 +98,15 @@ public class ImageService {
 	public List<Image> 인기게시글가져오기() {
 		List<Image> images = imageRepository.mLikeImages();
 		return images;
+	}
+
+
+	@Transactional
+	public void 이미지삭제(int imageId) {
+		
+		System.out.println(imageId + "sssssssssssssssssssssssssssssss");
+		imageRepository.deleteById(imageId);
+		
 	}
 	
 	

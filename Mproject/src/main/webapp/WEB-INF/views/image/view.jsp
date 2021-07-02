@@ -62,10 +62,14 @@
                             <c:otherwise>
                             <input class="btn btn-outline-dark flex-shrink-0" type="button" onclick="toggleLike(${imagedto.image.id})" id = "buttonLike" value="LIKE"/>
                                
-
+  					
                          
                             </c:otherwise>
-                    		</c:choose>
+                   		</c:choose>
+                   				
+                   				<c:if test = "${imagedto.user.id == principal.user.id}">
+                   				&nbsp;&nbsp; <input class="btn btn-outline-dark flex-shrink-0" type="button" onclick="deleteImage(${imagedto.image.id})"  value="x"/>
+                             	</c:if>
                         </div>
                     </div>
                 </div>

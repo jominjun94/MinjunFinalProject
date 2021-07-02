@@ -1,14 +1,19 @@
 package com.cos.Mproject.domain.image;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
+import com.cos.Mproject.domain.like.Likes;
 import com.cos.Mproject.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -34,6 +39,9 @@ public class Image {
 	@JoinColumn(name = "userId")
 	@ManyToOne
 	private User user;
+	
+	@OneToMany(mappedBy = "imge",cascade = CascadeType.REMOVE)
+	private  List<Likes> likes;
 	
 	private LocalDateTime createDate;
 	

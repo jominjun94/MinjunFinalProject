@@ -15,6 +15,7 @@ import com.cos.Mproject.dto.image.ImageDto;
 import com.cos.Mproject.dto.image.ImageUploadDto;
 import com.cos.Mproject.handler.CustomValidationException;
 import com.cos.Mproject.service.ImageService;
+import com.cos.Mproject.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class ImageController {
 
 	private final ImageService imageService;
+	
 	
 	
 	
@@ -48,6 +50,8 @@ public class ImageController {
 	public String view(@PathVariable int imageId , Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		
 		ImageDto imageEntity = imageService.사진가져오기(imageId,principalDetails.getUser().getId());
+		
+	
 		model.addAttribute("imagedto",imageEntity);
 		return "image/view";
 		
