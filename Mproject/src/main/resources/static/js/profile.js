@@ -1,5 +1,5 @@
 function toggleSubscribe(toUserId) {
-	if (document.getElementById("myButton1").value == "subscribeCanel") {
+	if (document.getElementById("myButton1").value == "SUBSCRIBECANCEL") {
 		
 		
 		$.ajax({
@@ -9,7 +9,7 @@ function toggleSubscribe(toUserId) {
 		
 		
 		}).done(res =>{
-		document.getElementById("myButton1").value = "subscribe";
+		document.getElementById("myButton1").value = "SUBSCRIBE";
 		location.reload();
 		
 		}).fail(error =>{
@@ -22,7 +22,7 @@ function toggleSubscribe(toUserId) {
 		
 		
 		
-	} else if(document.getElementById("myButton1").value == "subscribe") {
+	} else if(document.getElementById("myButton1").value == "SUBSCRIBE") {
 	
 	$.ajax({
 		type: "post",
@@ -31,7 +31,7 @@ function toggleSubscribe(toUserId) {
 		
 		
 		}).done(res =>{
-		document.getElementById("myButton1").value = "subscribeCanel";
+		document.getElementById("myButton1").value = "SUBSCRIBECANCEL";
 		location.reload();
 		
 		}).fail(error =>{

@@ -87,6 +87,15 @@ public class ImageService {
 		
 		return images;
 	}
+
+
+	@Transactional(readOnly = true)
+	public List<Image> 인기게시글가져오기() {
+		List<Image> images = imageRepository.mLikeImages();
+		return images;
+	}
+	
+	
 	
 	
 	

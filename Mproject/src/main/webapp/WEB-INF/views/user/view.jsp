@@ -60,11 +60,15 @@ auto; margin-right: auto;
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/">Home</a></li>
+						aria-current="page" href="/">HOME</a></li>
+											<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/image/likes">HOT POST</a></li>
+						<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/user/usersubview">SUBSCRIBEPAGE</a></li>
 						<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/user/${principal.user.id}">MYPAGE</a></li>
 					<c:if test="${principal.user.id == dto.user.id}">
-						<li class="nav-item"><a class="nav-link" href="/image/upload">Write</a></li>
+						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<c:if test="${principal.user.username != dto.user.name}">
 
@@ -78,25 +82,25 @@ auto; margin-right: auto;
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">${dto.user.name}'s
-					${dto.user.images.size()} posts</h1>
+				<h1 class="display-4 fw-bolder">${dto.user.name}
+					POST</h1>
 					<c:if test="${principal.user.id == dto.user.id}">
-					     <button  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">sub list</button>
+					     <button  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">SUB LIST</button>
 					</c:if>
 				<c:choose>
 					<c:when test="${dto.subscribeState}">
 						<input type="button" onclick="toggleSubscribe(${dto.user.id})"
-							value="subscribeCanel" id="myButton1" />
+							value="SUBSCRIBECANCEL" id="myButton1" />
 					</c:when>
 					<c:otherwise>
 						<input type="button" onclick="toggleSubscribe(${dto.user.id})"
-							value="subscribe" id="myButton1" />
+							value="SUBSCRIBE" id="myButton1" />
 					</c:otherwise>
 				</c:choose>
 			
 
 
-				<p class="lead fw-normal text-white-50 mb-0">With Your happy</p>
+				<p class="lead fw-normal text-white-50 mb-0">${dto.user.images.size()} POST</p>
 			</div>
 		</div>
 	</header>

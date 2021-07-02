@@ -88,7 +88,7 @@
                             <a href="/user/${principal.user.id}">UpLoad!!</a>
                             
                         </p>
-                        <a class="btn btn-dark btn-xl" href="#">hot to many</a>
+                        <a class="btn btn-dark btn-xl" href="/image/likes">hot to many</a>
                     </div>
                 </div>
             </div>

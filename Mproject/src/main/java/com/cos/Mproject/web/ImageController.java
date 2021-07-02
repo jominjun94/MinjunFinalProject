@@ -1,5 +1,7 @@
 package com.cos.Mproject.web;
 
+import java.util.List;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +51,13 @@ public class ImageController {
 		model.addAttribute("imagedto",imageEntity);
 		return "image/view";
 		
+	}
+	
+	@GetMapping("/image/likes")
+	public String likeView(Model model) {
+		List<Image> imageEntitys = imageService.인기게시글가져오기();
+		model.addAttribute("images",imageEntitys);
+		return "image/likeView";
 	}
 	
 
