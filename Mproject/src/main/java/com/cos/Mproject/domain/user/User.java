@@ -46,7 +46,7 @@ public class User {
 	private String profileImageUrl; // 사진
 	private String role; // 권한 
 	
-	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
 	@JsonIgnoreProperties({"user"})
 	private List<Image> images;
 	

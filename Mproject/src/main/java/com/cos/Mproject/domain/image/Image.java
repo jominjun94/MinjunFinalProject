@@ -35,13 +35,14 @@ public class Image {
 	
 	private String caption; // 사진   - 설명 
 	private String postImageUrl; // 사진을 전송받고  사진을 서베에 특정 폴더에 저장 db에 그 저장된 경로로 저장
+	
 	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name = "userId")
 	@ManyToOne
 	private User user;
 	
-	@OneToMany(mappedBy = "imge",cascade = CascadeType.REMOVE)
-	private  List<Likes> likes;
+	
+
 	
 	private LocalDateTime createDate;
 	

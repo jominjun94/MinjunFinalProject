@@ -4,18 +4,10 @@ function storyLoad() {
 		url: "/api/images",
 		dataType: "json"
 	}).done(res => {
-	
-		console.log(res.data);
-		
-	
-			let storyItem = getStoryItem(res.data);
-			$("#storyList").append(storyItem);
-		
-		
-		
-		
-		
-		
+
+		let storyItem = getStoryItem(res.data);
+		$("#storyList").append(storyItem);
+
 
 	}).fail(error => {
 		console.log("오류", error);

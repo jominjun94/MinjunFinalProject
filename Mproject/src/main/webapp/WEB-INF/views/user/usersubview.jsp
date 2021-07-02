@@ -83,7 +83,7 @@ auto; margin-right: auto;
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
 				<h1 class="display-4 fw-bolder">
-					${principal.user.name}'s SUBSCRIBEPAGE</h1>
+					${principal.user.name} SUBSCRIBEPAGE</h1>
 
 				
 			
