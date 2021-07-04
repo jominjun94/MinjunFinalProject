@@ -70,9 +70,8 @@ auto; margin-right: auto;
 					<c:if test="${principal.user.id == dto.user.id}">
 						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
 					</c:if>
-					<c:if test="${principal.user.username != dto.user.name}">
-
-					</c:if>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/faq/board">FAQ</a></li>
 				</ul>
 
 			</div>
@@ -85,15 +84,16 @@ auto; margin-right: auto;
 				<h1 class="display-4 fw-bolder">${dto.user.name}
 					POST</h1>
 					<c:if test="${principal.user.id == dto.user.id}">
-					     <button  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">SUB LIST</button>
+					     <button class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">SUB LIST</button>
 					</c:if>
+				
 				<c:choose>
 					<c:when test="${dto.subscribeState}">
-						<input type="button" onclick="toggleSubscribe(${dto.user.id})"
+						<input class="btn btn-secondary" type="button" onclick="toggleSubscribe(${dto.user.id})"
 							value="SUBSCRIBECANCEL" id="myButton1" />
 					</c:when>
 					<c:otherwise>
-						<input type="button" onclick="toggleSubscribe(${dto.user.id})"
+						<input class="btn btn-secondary" type="button" onclick="toggleSubscribe(${dto.user.id})"
 							value="SUBSCRIBE" id="myButton1" />
 					</c:otherwise>
 				</c:choose>
@@ -113,7 +113,7 @@ auto; margin-right: auto;
 
 				<c:if test="${empty dto.user.images}">
 
-					<h2>try your story</h2>
+					
 
 				</c:if>
 
@@ -157,7 +157,7 @@ auto; margin-right: auto;
      	<c:forEach var = "user" items="${users}">
           <div class="mb-3">
           <p><label for="recipient-name" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAME&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-primary">${user.name}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-outline-dark mt-auto">${user.name}</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/user/${user.id}"><button class="btn btn-secondary" type="button" > Move</button></a> </label></p>
           
           </div>

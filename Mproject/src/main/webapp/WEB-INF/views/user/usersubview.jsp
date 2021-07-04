@@ -70,9 +70,8 @@ auto; margin-right: auto;
 					<c:if test="${principal.user.id == dto.user.id}">
 						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
 					</c:if>
-					<c:if test="${principal.user.username != dto.user.name}">
-
-					</c:if>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/faq/board">FAQ</a></li>
 				</ul>
 
 			</div>
