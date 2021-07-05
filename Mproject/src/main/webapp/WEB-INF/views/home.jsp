@@ -57,7 +57,7 @@
 				 <c:if test = "${principal != null}">	
                <li class="sidebar-nav-item"><a href="/logout">LOGOUT</a></li>
                 </c:if>
-                <li class="sidebar-nav-item"><a href="/faq/board">FAQ</a></li>
+                <li class="sidebar-nav-item"><a href="/board">FAQ</a></li>
             </ul>
         </nav>
         <!-- Header-->

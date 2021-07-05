@@ -71,7 +71,7 @@ auto; margin-right: auto;
 						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/faq/board">FAQ</a></li>
+						aria-current="page" href="/board">FAQ</a></li>
 				</ul>
 
 			</div>
