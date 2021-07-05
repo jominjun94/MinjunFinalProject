@@ -8,6 +8,9 @@ let index = {
 		$("#btn-delete").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
 			this.deleteById();
 		});
+		$("#btn-deleteAdmin").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
+			this.deleteByIdadmin();
+		});
 		},
 	
 	
@@ -53,13 +56,38 @@ let index = {
 					
 			$.ajax({ 
 				type: "DELETE",
-				url: "/api/board/" + id,
+				url: "/admin/api/board/" + id,
 				dataType: "json", 
 				contentType: "application/json; charset=utf-8"
 			}).done(function(resp){
 				
 			console.log(resp);
 			location.href = "/board";
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+			
+			
+			
+		});
+		
+	},
+	
+	
+		deleteByIdadmin: function(){
+		
+		var id = $("#id").text();
+				
+					
+			$.ajax({ 
+				type: "DELETE",
+				url: "/admin/api/board/" + id,
+				dataType: "json", 
+				contentType: "application/json; charset=utf-8"
+			}).done(function(resp){
+				
+			console.log(resp);
+			location.href = "/admin/board";
 			
 		}).fail(function(error){
 			alert(JSON.stringify(error));

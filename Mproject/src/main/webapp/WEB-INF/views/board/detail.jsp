@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
@@ -28,7 +30,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">${principal.user.name}</a>
+			<a class="navbar-brand" href="#!">ADMIN</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,7 +51,7 @@
 						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/board">FAQ</a></li>
+						aria-current="page" href="/admin/board">FAQ</a></li>
 				</ul>
 
 			</div>
@@ -80,10 +82,12 @@
 	
 	  
 	   
-				<button type="button" id="btn-reply-save" class="btn btn-outline-dark mt-auto">reply</button>
+				
 				<button class="btn btn-outline-dark mt-auto" onclick="history.back()">back</button>
+				
+				<c:if test="${board.user.username == principal.user.username}">
 				<button type="button" class="btn btn-outline-dark mt-auto" id ="btn-delete">delete</button>
-		
+				</c:if>
 	
 
 

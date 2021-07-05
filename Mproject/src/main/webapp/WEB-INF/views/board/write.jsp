@@ -88,9 +88,9 @@
 	
 	  
 	   
-				&nbsp;&nbsp;&nbsp;&nbsp;<button id = "btn-save" class="btn btn-primary">write</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;<button id = "btn-save"  class="btn btn-outline-dark mt-auto">write</button>
 				
-				<button class="btn btn-secondary" onclick="history.back()">back</button>
+				<button class="btn btn-outline-dark mt-auto" onclick="history.back()">back</button>
 				
 		
 	

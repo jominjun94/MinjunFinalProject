@@ -14,6 +14,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import com.cos.Mproject.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +36,7 @@ public class Board {
 	@Lob
 	private String content;
 	
+	@JsonIgnoreProperties({"images"})
 	@ManyToOne(fetch= FetchType.EAGER) 
 	@JoinColumn(name = "userId")
 	private User user;

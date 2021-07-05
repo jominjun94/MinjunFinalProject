@@ -1,5 +1,9 @@
-  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+    
+    
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var = "principal"/>
 </sec:authorize>
@@ -71,10 +75,18 @@
         <td>${board.title}</td>
   		<td>${board.user.name}</td>
         <td>${board.createDate}</td>
+      
             	<th>
+          <c:if test="${board.user.username == principal.user.username}">
 			<a class="btn btn-outline-dark mt-auto"
 				href="/board/${board.id}">enter</a>
+			</c:if>
+			 <c:if test="${board.user.username != principal.user.username}">
+			<a class="btn btn-outline-dark mt-auto"
+				href="#">secrete</a>
+			</c:if>
 				</th>
+				
  		</tr>
 	</c:forEach>
     </tbody>
