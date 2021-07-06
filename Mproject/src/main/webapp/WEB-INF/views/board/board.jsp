@@ -46,6 +46,9 @@
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/board">FAQ</a></li>
+						<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/reply">REPLY</a></li>
+						
 				</ul>
 
 			</div>

@@ -14,13 +14,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.Mproject.config.auth.PrincipalDetails;
 import com.cos.Mproject.domain.board.Board;
+import com.cos.Mproject.domain.reply.Reply;
 import com.cos.Mproject.service.BoardService;
+import com.cos.Mproject.service.ReplyService;
+import com.cos.Mproject.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class AdminController {
 	private final BoardService boardService; 
+	private final UserService userService;
+	private final ReplyService replyService;
+	
+	// 메인 페이지
 	@Secured("ROLE_ADMIN")
 	@GetMapping("/admin/info")
 	public String adminInfo(Model model ,@AuthenticationPrincipal PrincipalDetails details) {
@@ -30,7 +37,7 @@ public class AdminController {
 		return "admin/info";
 	}
 	
-	
+	//글목록
 	@Secured("ROLE_ADMIN")
 	@GetMapping("/admin/board")
 	public String adminBoard(Model model, @PageableDefault(size = 5, sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
@@ -42,7 +49,7 @@ public class AdminController {
 		return "admin/board";
 	}
 	
-	
+	//글상세보기
 	@Secured("ROLE_ADMIN")
 	@GetMapping("/admin/board/{id}")
 	public String admindetail(@PathVariable int id,Model model) {
@@ -56,6 +63,49 @@ public class AdminController {
 	}
 	
 	
+	//REPLY
+		@Secured("ROLE_ADMIN")
+		@GetMapping("/admin/reply/{id}")
+		public String adminrely(@PathVariable String id,Model model) {
+			
+			userService.회원찾기(id);
+			
+			model.addAttribute("user",userService.회원찾기(id));
+			
+			return "admin/reply";
+		}
+	
+	
+		
+		//Reply 글목록
+		@Secured("ROLE_ADMIN")
+		@GetMapping("/admin/board/boardReply")
+		public String boardReply(Model model, @PageableDefault(size = 5, sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
+			
+			Page<Reply> boards = replyService.글목록(pageable);
+		
+			model.addAttribute("boards",boards);
+			
+			
+			return "admin/boardReply";
+		}
+		
+		
+		
+		//REPLY 글상세보기
+		@Secured("ROLE_ADMIN")
+		@GetMapping("/admin/board/reply/{id}")
+		public String replydetail(@PathVariable int id,Model model) {
+			Reply reply = replyService.상세보기(id);
+				
+			
+			model.addAttribute("reply",reply);
+			
+			
+			return "admin/replyDetail";
+		}
+
+		
 	//@PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 	//@GetMapping("/admin/AdMan")
 	//public String adminManger(Model model ,@AuthenticationPrincipal PrincipalDetails details) {

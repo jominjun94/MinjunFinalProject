@@ -8,8 +8,23 @@ let index = {
 		$("#btn-delete").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
 			this.deleteById();
 		});
-		$("#btn-deleteAdmin").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
+		
+		
+			$("#btn-deleteAdmin").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
 			this.deleteByIdadmin();
+		});
+		
+		
+			$("#btn-deleteAdminReply").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
+			this.deleteAdminReply();
+		});
+		
+			$("#btn-adminsave").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
+			this.adminSave();
+		});
+		
+		$("#btn-reply-save").on("click",()=>{//function(){} 이방법도 있긴하지만 , this를 쓰기 위한 방법이다 
+			this.replyAdmin();
 		});
 		},
 	
@@ -17,6 +32,8 @@ let index = {
 	
 	save: function(){
 			//alert('user의 save함수 호출됨');
+			
+			
 			let data = {
 					title: $("#title").val(),
 					content: $("#content").val(),
@@ -91,6 +108,92 @@ let index = {
 			
 		}).fail(function(error){
 			alert(JSON.stringify(error));
+			
+			
+			
+		});
+		
+	},
+	
+		
+		deleteAdminReply: function(){
+		
+		var id = $("#id").text();
+				
+					
+			$.ajax({ 
+				type: "DELETE",
+				url: "/admin/api/board/reply/" + id,
+				dataType: "json", 
+				contentType: "application/json; charset=utf-8"
+			}).done(function(resp){
+				
+			console.log(resp);
+			location.href = "/admin/board/boardReply";
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+			
+			
+			
+		});
+		
+	},
+	
+	
+	
+		replyAdmin: function(){
+		
+		var userId = $("#userId").text();
+				
+					
+			$.ajax({ 
+				type: "POST",
+				url: "/admin/api/board/reply/" + userId,
+				dataType: "json", 
+				contentType: "application/json; charset=utf-8"
+			}).done(function(resp){
+			
+			var id = resp.data.username;
+			console.log(resp);
+			location.href = "/admin/reply/" + id;
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+			
+			
+			
+		});
+		
+	},
+	
+	
+	adminSave: function(){
+			
+			
+	var userId = $("#userId").text();
+	let data = {
+					title: $("#title").val(),
+					content: $("#content").val(),
+					
+			};
+			
+
+			$.ajax({ 
+				type: "POST",
+				url: "/admin/api/board/save/" + userId,
+				data: JSON.stringify(data), // http body데이터
+				contentType: "application/json; charset=utf-8",// body데이터가 어떤 타입인지(MIME)
+				dataType: "json" // 요청을 서버로해서 응답이 왔을 때 기본적으로 모든 것이 문자열 (생긴게 json이라면) => javascript오브젝트로 변경
+			}).done(function(resp){
+				
+			
+			
+			location.href = "/admin/board/boardReply";
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+			
 			
 			
 			

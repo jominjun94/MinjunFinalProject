@@ -5,13 +5,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.cos.Mproject.config.auth.PrincipalDetails;
 import com.cos.Mproject.domain.board.Board;
+import com.cos.Mproject.domain.reply.Reply;
 import com.cos.Mproject.service.BoardService;
+import com.cos.Mproject.service.ReplyService;
 import com.cos.Mproject.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,9 +25,9 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class BoardController {
 
-	
+	private final UserService userService;
 	private final BoardService boardService; 
-	
+	private final ReplyService replyService;
 	//메인 페이지
 	@GetMapping("/board")
 	public String board(Model model, @PageableDefault(size = 5, sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
@@ -62,5 +66,29 @@ public class BoardController {
 	
 	
 	
+	//REPLY
+	@GetMapping("/reply")
+	public String adminrely(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		
+	
+		replyService.답변확인회원(principalDetails.getUser().getId());
+		
+		 
+		 model.addAttribute("reply", replyService.답변확인회원(principalDetails.getUser().getId()));
+		 
+		return "board/boardReply";
+	}
+	////REPLY 상세보기
+	@GetMapping("/board/reply/{id}")
+	public String replydetail(@PathVariable int id,Model model) {
+		Reply reply = replyService.상세보기(id);
+			
+		
+		model.addAttribute("reply",reply);
+		
+		
+		return "board/replyDetail";
+	}
+
 
 }

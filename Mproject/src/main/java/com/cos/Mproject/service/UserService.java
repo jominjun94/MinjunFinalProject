@@ -65,5 +65,14 @@ public class UserService {
 		return findUser;
 
 	}
+	
+	
+	@Transactional
+	public User 회원찾기(String id) {
+
+	 User findUser = userRepository.findByUsername(id);
+		return findUser;
+
+	}
 
 }
