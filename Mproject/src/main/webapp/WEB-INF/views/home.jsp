@@ -54,10 +54,13 @@
                  <c:if test = "${principal != null}">	
                <li class="sidebar-nav-item"><a href="/user/${principal.user.id}">MYPAGE</a></li>
                 </c:if>
+                 <li class="sidebar-nav-item"><a href="/board">QnA</a></li>
 				 <c:if test = "${principal != null}">	
                <li class="sidebar-nav-item"><a href="/logout">LOGOUT</a></li>
                 </c:if>
-                <li class="sidebar-nav-item"><a href="/board">FAQ</a></li>
+                 <c:if test = "${principal.user.role == 'ROLE_ADMIN'}">	
+            	  <li class="sidebar-nav-item"><a href="/admin/board">ADMIN</a></li>
+            	  </c:if>
             </ul>
         </nav>
         <!-- Header-->

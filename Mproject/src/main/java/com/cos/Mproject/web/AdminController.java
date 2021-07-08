@@ -29,7 +29,7 @@ public class AdminController {
 	
 	// 메인 페이지
 	@Secured("ROLE_ADMIN")
-	@GetMapping("/admin/info")
+	@GetMapping("/admin")
 	public String adminInfo(Model model ,@AuthenticationPrincipal PrincipalDetails details) {
 		
 		model.addAttribute("admin",details.getUser());
@@ -44,6 +44,19 @@ public class AdminController {
 		
 		Page<Board> boards = boardService.글목록(pageable);
 		
+		
+		int pageNumber=boards.getPageable().getPageNumber(); //현재페이지
+		int totalPages=boards.getTotalPages(); //총 페이지 수. 검색에따라 10개면 10개..
+		int pageBlock = 5; //블럭의 수 1, 2, 3, 4, 5
+		int startBlockPage = ((pageNumber)/pageBlock)*pageBlock+1; //현재 페이지가 7이라면 1*5+1=6
+		int endBlockPage = startBlockPage+pageBlock-1; //6+5-1=10. 6,7,8,9,10해서 10
+		endBlockPage= totalPages<endBlockPage? totalPages:endBlockPage;
+
+	
+		model.addAttribute("startBlockPage", startBlockPage); 
+		model.addAttribute("endBlockPage", endBlockPage);
+
+		
 		model.addAttribute("boards",boards);
 		
 		return "admin/board";
@@ -55,6 +68,8 @@ public class AdminController {
 	public String admindetail(@PathVariable int id,Model model) {
 		Board board = boardService.상세보기(id);
 			
+	
+
 		
 		model.addAttribute("board",board);
 		
@@ -84,6 +99,19 @@ public class AdminController {
 			
 			Page<Reply> boards = replyService.글목록(pageable);
 		
+			
+			int pageNumber=boards.getPageable().getPageNumber(); //현재페이지
+			int totalPages=boards.getTotalPages(); //총 페이지 수. 검색에따라 10개면 10개..
+			int pageBlock = 5; //블럭의 수 1, 2, 3, 4, 5
+			int startBlockPage = ((pageNumber)/pageBlock)*pageBlock+1; //현재 페이지가 7이라면 1*5+1=6
+			int endBlockPage = startBlockPage+pageBlock-1; //6+5-1=10. 6,7,8,9,10해서 10
+			endBlockPage= totalPages<endBlockPage? totalPages:endBlockPage;
+
+		
+			model.addAttribute("startBlockPage", startBlockPage); 
+			model.addAttribute("endBlockPage", endBlockPage);
+
+			
 			model.addAttribute("boards",boards);
 			
 			

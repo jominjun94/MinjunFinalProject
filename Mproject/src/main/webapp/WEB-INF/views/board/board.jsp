@@ -45,9 +45,9 @@
 						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/board">FAQ</a></li>
+						aria-current="page" href="/board">QnA</a></li>
 						<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/reply">REPLY</a></li>
+						aria-current="page" href="/board/reply">REPLY</a></li>
 						
 				</ul>
 
@@ -57,7 +57,7 @@
 	<br/>
 	
 <div class="container">
-  <h2>Give feedback to the developer</h2>
+  <h2> Give feedback to the developer <a class="btn btn-outline-dark mt-auto" href="/board/write">Write Your Opinion</a> </h2> 
           
   <table class="table table-striped">
     <thead>
@@ -96,11 +96,45 @@
   </table>
 </div>
 <div class="text-center">
-									<a class="btn btn-outline-dark mt-auto"
-										href="/board/write">Write Your Opinion</a>
+									
 										
 							
-										
+													<!-- start -->					
+	<c:choose>
+		<c:when test="${boards.first}"></c:when>
+		<c:otherwise>
+			<a class="btn btn-outline-dark mt-auto" href = "/board/?page=0">start</a>
+			<a class="btn btn-outline-dark mt-auto" href = "/board/?page=${boards.number-1}">&larr;</a>
+		</c:otherwise>
+	</c:choose>
+	
+	
+	<c:forEach begin="${startBlockPage}" end="${endBlockPage}" var="i">
+		<c:choose>
+			<c:when test="${boards.pageable.pageNumber + 1 == i }">
+				<a class="btn btn-outline-dark mt-auto" href = "/board/?page=${i-1}">${i}</a>
+			</c:when>
+			<c:otherwise>
+				<a class="btn btn-outline-dark mt-auto" href = "/board/?page=${i-1}">${i}</a>
+			</c:otherwise>
+		
+		
+		</c:choose>
+		
+	
+	
+	</c:forEach>
+	
+	
+			<!-- end -->
+	<c:choose>
+		<c:when test="${boards.last}"></c:when>
+		<c:otherwise>
+			<a class="btn btn-outline-dark mt-auto" href = "/board/?page=${boards.number+1}">&rarr;</a>
+			<a class="btn btn-outline-dark mt-auto" href = "/board/?page=${boards.totalPages-1}">last</a>
+		</c:otherwise>
+	</c:choose>
+					
 								</div><br/>
 
 	<footer class="py-5 bg-dark">
