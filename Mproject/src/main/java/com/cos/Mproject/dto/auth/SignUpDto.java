@@ -14,6 +14,7 @@ public class SignUpDto {
 	@Size(min = 3, max = 20 ,message = "3자~ 20자를 입력해주세요.") // message 안해주면 알아서 나간다 
 	private String username;
 	@NotEmpty(message = "password 입력해주세요")
+	@Size(min = 4, max = 20 ,message = "4자~ 20자를 입력해주세요.")
 	private String password;
 	@NotEmpty(message = "email 입력해주세요")
 	private String email;

@@ -153,10 +153,10 @@ body {
     <form  class="loginForm" action="/auth/signup" method="post">
       <h2>SignUp</h2>
       <div class="idForm">
-        <input type="text" class="id" placeholder="ID" name = "username">
+        <input type="text" class="id" placeholder="ID(3~20)" name = "username">
       </div>
       <div class="passForm">
-        <input type="password" class="pw" placeholder="PW" name= "password">
+        <input type="password" class="pw" placeholder="PW(4~20)" name= "password">
       </div>
         <div class="nameForm">
         <input type="text" class="name" placeholder="name" name = "name">

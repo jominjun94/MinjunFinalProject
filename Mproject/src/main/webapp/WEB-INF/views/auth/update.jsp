@@ -182,7 +182,7 @@ body {
         <input type="text" class="id" placeholder="ID" name = "username" value="${principal.user.username}" readonly="readonly">
       </div>
       <div class="passForm">
-        <input type="password" class="pw" placeholder="PW" name= "password" required="required">
+        <input type="password" class="pw" placeholder="PW (4~20)" name= "password" required="required">
       </div>
         <div class="nameForm">
         <input type="text" class="name" placeholder="name" name = "name" value="${principal.user.name}" required="required">
@@ -191,7 +191,7 @@ body {
         <input type="email" class="email" placeholder="email" name = "email" value="${principal.user.email}">
       </div>
         <div class="PhoneForm">
-        <input type="text" class="phone" placeholder="phone" name = "phone" value="${principal.user.phone}">
+        <input type="text" class="phone" placeholder="phone (10~11)" name = "phone" value="${principal.user.phone}">
       </div>
       <button class="btn">
      	UPDATE

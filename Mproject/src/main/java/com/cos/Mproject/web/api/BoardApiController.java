@@ -39,16 +39,16 @@ public class BoardApiController {
 	public ResponseEntity<?> boardWrite(@Valid @RequestBody BoardDto boardDto,BindingResult bindingResult, @AuthenticationPrincipal PrincipalDetails details){
 		
 		 
-
-		 if(bindingResult.hasErrors()) { //에러가 나타나면~ 
-		 Map<String, String> errorMap = new HashMap<String, String>(); // map을 만들어서~
-		 
-		 for(FieldError error : bindingResult.getFieldErrors()) { //발생 에러를 에러에 담아~
-		 errorMap.put(error.getField(), error.getDefaultMessage()); }
-		  
-		  
-		 throw new CustomValidationApiException("유효성실패",errorMap); }
-		 
+		/*/* aop 가 대신 하게 됩니다
+		 * if(bindingResult.hasErrors()) { Map<String, String> errorMap = new
+		 * HashMap<String, String>();
+		 * 
+		 * for(FieldError error : bindingResult.getFieldErrors()) {
+		 * errorMap.put(error.getField(), error.getDefaultMessage()); }
+		 * 
+		 * 
+		 * throw new CustomValidationApiException("유효성실패",errorMap); }
+		 */
 		
 		
 		boardService.글작성(boardDto.getContent(),boardDto.getTitle(),details.getUser());

@@ -27,15 +27,7 @@ public class AdminController {
 	private final UserService userService;
 	private final ReplyService replyService;
 	
-	// 메인 페이지
-	@Secured("ROLE_ADMIN")
-	@GetMapping("/admin")
-	public String adminInfo(Model model ,@AuthenticationPrincipal PrincipalDetails details) {
-		
-		model.addAttribute("admin",details.getUser());
-		
-		return "admin/info";
-	}
+	
 	
 	//글목록
 	@Secured("ROLE_ADMIN")
@@ -78,7 +70,7 @@ public class AdminController {
 	}
 	
 	
-	//REPLY
+	//REPLY 글쓰는 곳으로 이동
 		@Secured("ROLE_ADMIN")
 		@GetMapping("/admin/reply/{id}")
 		public String adminrely(@PathVariable String id,Model model) {

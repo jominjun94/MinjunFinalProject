@@ -48,6 +48,15 @@ public class ControllerExceptionHandler {
 		
 				
 	}
+	
+	
+	@ExceptionHandler(CustomApiExceptionAlert.class) // 회원 가입 -> 유효성 검사 
+	public String CustomApiExceptionAlert(CustomApiExceptionAlert e) {
+	
+	return Script.back("아이디가 중복 입니다.");
+		
+				
+	}
 
 
 

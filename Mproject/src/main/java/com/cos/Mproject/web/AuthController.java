@@ -53,21 +53,11 @@ public class AuthController {
 			 System.out.println(error.getField()); //username
 			 
 			 throw new CustomValidationException( "유효성 에러" , errorMap);			
-		}
-		
-		
-		
-	}
+		}}
 	
-		User user = signUpDto.toEntity();
-	  User useEntity = authService.회원가입(user);
-	  
-	  if(useEntity == null) {
-		  throw new RuntimeException("회원가입 오류");
-	  }
-		
-		
-		
+	  User user = signUpDto.toEntity();
+	  authService.회원가입(user);
+	 
 		return "auth/signin";
 	}
 	

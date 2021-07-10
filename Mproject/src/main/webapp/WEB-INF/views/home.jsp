@@ -33,7 +33,7 @@
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
            		<c:if test = "${principal == null}">	
-                <li class="sidebar-brand"><a href="#page-top">forum</a></li>
+                <li class="sidebar-brand"><a href="#page-top">Project</a></li>
                 </c:if>
                 <c:if test = "${principal != null}">	
                 <li class="sidebar-brand"><a href="#page-top">${principal.user.name}'s forum</a></li>
@@ -68,7 +68,7 @@
             <div class="container px-4 px-lg-5 text-center">
             
             	    <c:if test = "${principal == null}">
-            		<h1 class="mb-1">forum</h1>
+            		<h1 class="mb-1">Project</h1>
     				</c:if>
     				<c:if test = "${principal != null}">
                 <h1 class="mb-1">${principal.user.name}'s forum</h1>
