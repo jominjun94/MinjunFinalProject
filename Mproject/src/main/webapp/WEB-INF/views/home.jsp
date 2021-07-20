@@ -15,7 +15,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
        
-        <title>MINJUN'S forum</title>
+        <title>MINJUN</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -71,7 +71,7 @@
             		<h1 class="mb-1">Project</h1>
     				</c:if>
     				<c:if test = "${principal != null}">
-                <h1 class="mb-1">${principal.user.name}'s forum</h1>
+                <h1 class="mb-1">${principal.user.name}'s DREAM</h1>
              </c:if>
                  <h3 class="mb-5"><em>TRY YOUR DREAM</em></h3>
                  
@@ -81,22 +81,7 @@
                
             </div>
         </header>
-        <!-- About-->
-        <section class="content-section bg-light" id="about">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10">
-                        <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-                        <p class="lead mb-5">
-                            DO YOU WANT TELL ABOUT YOUR STORY->
-                            <a href="/user/${principal.user.id}">UpLoad!!</a>
-                            
-                        </p>
-                        <a class="btn btn-dark btn-xl" href="/image/likes">hot to many</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+      
         <!-- Services-->
         <section class="content-section bg-primary text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
@@ -107,27 +92,26 @@
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-                        <h4><strong>Responsive</strong></h4>
-                        <p class="text-faded mb-0">Looks great on any screen size!</p>
+                        <h4><strong>Look at other pictures</strong></h4>
+                      
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-                        <h4><strong>Redesigned</strong></h4>
-                        <p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
+                        <h4><strong>Write your story</strong></h4>
+                      
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
-                        <h4><strong>Favorited</strong></h4>
+                        <h4><strong>You can give a like</strong></h4>
                         <p class="text-faded mb-0">
-                            Millions of users
-                            <i class="fas fa-heart"></i>
-                            Start Bootstrap!
+                          
+                       
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
-                        <h4><strong>Question</strong></h4>
-                        <p class="text-faded mb-0">I mustache you a question...</p>
+                        <h4><strong>You can ask questions</strong></h4>
+                   
                     </div>
                 </div>
             </div>
