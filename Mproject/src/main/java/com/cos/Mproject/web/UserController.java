@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.cos.Mproject.config.auth.PrincipalDetails;
 import com.cos.Mproject.domain.user.User;
 import com.cos.Mproject.dto.user.UserDto;
+import com.cos.Mproject.photo.Photo;
 import com.cos.Mproject.service.ImageService;
+import com.cos.Mproject.service.PhotoService;
 import com.cos.Mproject.service.SubscribeService;
 import com.cos.Mproject.service.UserService;
 
@@ -24,6 +26,7 @@ public class UserController {
 
 	private final UserService userserivce;
 	private final SubscribeService subscribeService;
+	private final PhotoService photoService;
 	
 	
 	@GetMapping("/user/usersubview")
@@ -51,7 +54,8 @@ public class UserController {
 		UserDto userEntity = userserivce.회원프로필(id,details.getUser().getId());
 		
 		List<Integer> subp =  subscribeService.구독자가져오기(details.getUser().getId());  
-	
+		
+		Photo photoEntity = photoService.회원사진가져오기(id);
 		
 		List<User> users = new  ArrayList<User>();
 		
@@ -71,7 +75,7 @@ public class UserController {
 		
 		model.addAttribute("users",users);
 		model.addAttribute("dto",userEntity);
-		
+		model.addAttribute("photo",photoEntity);
 		return "user/view";
 	}
 	

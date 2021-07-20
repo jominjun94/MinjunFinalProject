@@ -25,11 +25,15 @@ auto; margin-right: auto;
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
 	href="../resources/assets2/favicon.ico" />
-<!-- Bootstrap icons-->
+<!-- Bootstrap icons--> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
 	rel="stylesheet" />
@@ -68,7 +72,7 @@ auto; margin-right: auto;
 						<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/user/${principal.user.id}">MYPAGE</a></li>
 					<c:if test="${principal.user.id == dto.user.id}">
-						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
+						<li class="nav-item"><a class="nav-link active" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/board">QnA</a></li>
@@ -81,8 +85,35 @@ auto; margin-right: auto;
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">${dto.user.name}
+			
+				
+			
+				
+			<c:choose>
+				<c:when test="${empty photo.postImageUrl}">
+				<h1 class="display-4 fw-bolder">	<a href = "/photo/upload"><img src="/resources/cinqueterre.png" class="rounded-circle" alt= "take photo" width="100" height="100"></a> ${dto.user.name}
 					POST</h1>
+				</c:when>
+				
+				<c:otherwise>
+					
+				<h1 class="display-4 fw-bolder">	<a href = "/photo/upload"><img src="/upload2/${photo.postImageUrl}" class="rounded-circle" alt= "take photo" width="100" height="100"></a> ${dto.user.name}
+					POST</h1>
+			
+				
+				
+				</c:otherwise>
+			</c:choose>
+			
+			
+
+			
+			
+		
+			
+				
+				
+				
 					<c:if test="${principal.user.id == dto.user.id}">
 					     <button class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">SUB LIST</button>
 					</c:if>
@@ -104,6 +135,7 @@ auto; margin-right: auto;
 			</div>
 		</div>
 	</header>
+	
 	<!-- Section-->
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 mt-5">
@@ -114,7 +146,24 @@ auto; margin-right: auto;
 				<c:if test="${empty dto.user.images}">
 
 					
-
+						
+							
+							
+							
+					<div class="col mb-5">
+						<div class="card h-100">
+							<!-- Product image-->
+							<img class="card-img-top" src="/resources/talk.jpg" />
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<br />
+								<div class="text-center">
+									<a class="btn btn-outline-dark mt-auto"
+										href="/image/upload">Write Your Story</a>
+								</div>
+							</div>
+						</div>
+					</div>
+							
 				</c:if>
 
 				<c:forEach var="image" items="${dto.user.images}">
@@ -153,14 +202,33 @@ auto; margin-right: auto;
      <h5 class="modal-title" id="exampleModalLabel">SUBSCRIBE LIST</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
+      
+      
+      
+      
+      
       <div class="modal-body">
+     	
+     	
+     	<c:if test="${empty users}">
+     	
+     	 <div class="mb-3">
+          <p><label for="recipient-name" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBSCRIBE LIST&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-outline-dark mt-auto">empty</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/image/likes"><button class="btn btn-secondary" type="button" >Move To HOT Post</button></a> </label></p>
+          
+        </div>
+     	</c:if>
+     	
+     	
      	<c:forEach var = "user" items="${users}">
           <div class="mb-3">
           <p><label for="recipient-name" class="col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAME&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="btn btn-outline-dark mt-auto">${user.name}</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/user/${user.id}"><button class="btn btn-secondary" type="button" > Move</button></a> </label></p>
           
-          </div>
+        </div>
         </c:forEach>
         
         	

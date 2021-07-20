@@ -46,7 +46,7 @@
 						<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/user/${principal.user.id}">MYPAGE</a></li>
 					<c:if test="${principal.user.id == dto.user.id}">
-						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
+						<li class="nav-item"><a class="nav-link active" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/board">QnA</a></li>

@@ -68,7 +68,7 @@ auto; margin-right: auto;
 						<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/user/${principal.user.id}">MYPAGE</a></li>
 					<c:if test="${principal.user.id == dto.user.id}">
-						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
+						<li class="nav-item"><a class="nav-link active" href="/image/upload">WRITE</a></li>
 					</c:if>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/board">QnA</a></li>
@@ -88,7 +88,7 @@ auto; margin-right: auto;
 			
 
 
-				<p class="lead fw-normal text-white-50 mb-0">click picture and Move To User</p>
+				<p class="lead fw-normal text-white-50 mb-0">click picture and Move To -User</p>
 			</div>
 		</div>
 	</header>
@@ -101,7 +101,14 @@ auto; margin-right: auto;
 
 			
 				
-
+		<!--
+		
+		
+		
+		 story.js
+		
+		
+		 --> 
 
 				
 			</div>

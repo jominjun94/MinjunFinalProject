@@ -68,7 +68,7 @@ auto; margin-right: auto;
 						<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/user/${principal.user.id}">MYPAGE</a></li>
 					<c:if test="${principal.user.id == dto.user.id}">
-						<li class="nav-item"><a class="nav-link" href="/image/upload">WRITE</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/image/upload">WRITE</a></li>
 					</c:if>
 						<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/board">QnA</a></li>
@@ -101,7 +101,7 @@ auto; margin-right: auto;
 
 				<c:if test="${empty images}">
 
-					<h2>try your story</h2>
+					<img src="/resources/cinqueterre.png" class="rounded-circle" alt="Cinque Terre" width="700" height="400"> 
 
 				</c:if>
 

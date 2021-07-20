@@ -43,19 +43,12 @@ public class ImageService {
 		
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 		
-		
-		
-		
 		// 통신 예외
 		try {
 			Files.write(imageFilePath, imageUploadDto.getFile().getBytes());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
 		
 		
 		// DB저장 
